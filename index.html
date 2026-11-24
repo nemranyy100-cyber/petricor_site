@@ -1,0 +1,857 @@
+!DOCTYPE html
+html lang=fr class=scroll-smooth
+head
+  meta charset=UTF-8 
+  meta name=viewport content=width=device-width, initial-scale=1.0 
+  titlePetricor Académie — Bootcamp Intensif de Tradingtitle
+  meta name=description content=Maîtrisez les marchés financiers avec une approche structurée et disciplinée. Bootcamp intensif de trading francophone  Price Action, Risk Management et Prop Firms. 
+
+  !-- Google Fonts Plus Jakarta Sans & Inter --
+  link rel=preconnect href=httpsfonts.googleapis.com 
+  link rel=preconnect href=httpsfonts.gstatic.com crossorigin 
+  link href=httpsfonts.googleapis.comcss2family=Interwght@400;500;600;700&family=Plus+Jakarta+Sanswght@500;600;700;800&display=swap rel=stylesheet 
+
+  !-- Tailwind CSS via CDN --
+  script src=httpscdn.tailwindcss.comscript
+  script
+    tailwind.config = {
+      theme {
+        extend {
+          colors {
+            obsidian '#0B0F19',
+            surface '#111827',
+            emeraldAccent '#10B981',
+            amberAccent '#F59E0B',
+          },
+          fontFamily {
+            sans ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            inter ['Inter', 'sans-serif'],
+          },
+          boxShadow {
+            'emerald-glow' '0 0 28px -4px rgba(16, 185, 129, 0.45)',
+            'amber-glow' '0 0 25px -5px rgba(245, 158, 11, 0.35)',
+          }
+        }
+      }
+    }
+  script
+
+  !-- Lucide Icons via CDN --
+  script src=httpsunpkg.comlucide@latestscript
+
+  style
+    body {
+      background-color #0B0F19;
+      color #F3F4F6;
+      font-family 'Plus Jakarta Sans', 'Inter', sans-serif;
+      overflow-x hidden;
+    }
+
+     Subtle fintech grid background 
+    .bg-grid-pattern {
+      background-size 44px 44px;
+      background-image 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+     Glassmorphism card style 
+    .glass-card {
+      background rgba(17, 24, 39, 0.72);
+      backdrop-filter blur(14px);
+      -webkit-backdrop-filter blur(14px);
+      border 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card-hover {
+      transition transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .glass-card-hoverhover {
+      transform translateY(-4px);
+      border-color rgba(16, 185, 129, 0.38);
+      box-shadow 0 12px 32px -12px rgba(16, 185, 129, 0.22);
+    }
+
+     Custom Accordion Transition 
+    .faq-content {
+      display grid;
+      grid-template-rows 0fr;
+      transition grid-template-rows 0.3s ease-out;
+    }
+    .faq-item.active .faq-content {
+      grid-template-rows 1fr;
+    }
+    .faq-inner {
+      overflow hidden;
+    }
+    .faq-icon {
+      transition transform 0.3s ease;
+    }
+    .faq-item.active .faq-icon {
+      transform rotate(180deg);
+    }
+
+     Select custom arrow 
+    select {
+      appearance none;
+      background-image url(dataimagesvg+xml,%3Csvg xmlns='httpwww.w3.org2000svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3Cpolyline%3E%3Csvg%3E);
+      background-repeat no-repeat;
+      background-position right 1rem center;
+      background-size 1.1rem;
+    }
+  style
+head
+body class=antialiased selectionbg-emeraldAccent30 selectiontext-emerald-200
+
+  !-- Background Ambient Glows --
+  div class=fixed inset-0 pointer-events-none z-0 overflow-hidden
+    div class=absolute -top-40 -left-40 w-96 h-96 bg-emeraldAccent15 rounded-full blur-[140px]div
+    div class=absolute top-13 -right-40 w-[28rem] h-[28rem] bg-amberAccent10 rounded-full blur-[150px]div
+    div class=absolute bottom-0 left-14 w-96 h-96 bg-emeraldAccent10 rounded-full blur-[150px]div
+  div
+
+  !-- =========================================================
+       1. STICKY NAVBAR
+  ========================================================== --
+  header id=navbar class=sticky top-0 z-50 border-b border-white10 bg-[#0B0F19]80 backdrop-blur-xl transition-all duration-300
+    div class=max-w-7xl mx-auto px-4 smpx-6 lgpx-8
+      div class=flex items-center justify-between h-20
+        !-- Brand Logo --
+        a href=# class=flex items-center gap-3 group
+          div class=w-10 h-10 rounded-xl bg-gradient-to-br from-emeraldAccent to-emerald-700 flex items-center justify-center shadow-emerald-glow group-hoverscale-105 transition-transform
+            i data-lucide=candlestick-chart class=w-5 h-5 text-whitei
+          div
+          div class=flex flex-col
+            span class=font-extrabold tracking-wider text-base smtext-lg text-white leading-none
+              PETRICOR span class=text-emeraldAccentACADÉMIEspan
+            span
+            span class=text-[10px] uppercase tracking-[0.2em] text-gray-400 mt-1Trading Bootcampspan
+          div
+        a
+
+        !-- Desktop Navigation --
+        nav class=hidden mdflex items-center gap-8
+          a href=#programme class=text-sm font-medium text-gray-300 hovertext-white transition-colorsProgrammea
+          a href=#avantages class=text-sm font-medium text-gray-300 hovertext-white transition-colorsAvantagesa
+          a href=#faq class=text-sm font-medium text-gray-300 hovertext-white transition-colorsFAQa
+        nav
+
+        !-- Desktop CTA & Mobile Menu Toggle --
+        div class=flex items-center gap-4
+          a href=#inscription class=hidden sminline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emeraldAccent hoverbg-emerald-400 text-[#0B0F19] font-bold text-sm shadow-emerald-glow transition-all duration-200 hoverscale-[1.02]
+            spanRejoindre le Bootcampspan
+            i data-lucide=arrow-right class=w-4 h-4i
+          a
+
+          !-- Mobile Hamburger Button --
+          button id=mobile-menu-btn type=button aria-label=Ouvrir le menu aria-expanded=false class=mdhidden p-2.5 rounded-xl border border-white10 bg-surface80 text-gray-200 hovertext-white hoverborder-emeraldAccent50 transition-colors
+            i data-lucide=menu id=menu-icon-open class=w-5 h-5i
+            i data-lucide=x id=menu-icon-close class=w-5 h-5 hiddeni
+          button
+        div
+      div
+    div
+
+    !-- Mobile Dropdown Menu --
+    div id=mobile-menu class=hidden mdhidden border-t border-white10 bg-[#0B0F19]95 backdrop-blur-xl
+      div class=px-4 py-5 space-y-3
+        a href=#programme class=mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hoverbg-white5 hovertext-emeraldAccent transition-colorsProgrammea
+        a href=#avantages class=mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hoverbg-white5 hovertext-emeraldAccent transition-colorsAvantagesa
+        a href=#faq class=mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-gray-200 hoverbg-white5 hovertext-emeraldAccent transition-colorsFAQa
+        a href=#inscription class=mobile-nav-link flex items-center justify-center gap-2 w-full px-5 py-3.5 mt-2 rounded-xl bg-emeraldAccent text-[#0B0F19] font-bold text-base shadow-emerald-glow
+          spanRejoindre le Bootcampspan
+          i data-lucide=arrow-right class=w-4 h-4i
+        a
+      div
+    div
+  header
+
+  main class=relative z-10
+    !-- =========================================================
+         2. HERO SECTION
+    ========================================================== --
+    section class=relative pt-16 pb-20 smpt-24 smpb-28 bg-grid-pattern border-b border-white5
+      div class=max-w-7xl mx-auto px-4 smpx-6 lgpx-8
+        div class=max-w-4xl mx-auto text-center
+          !-- Badge --
+          div class=inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-amberAccent10 border border-amberAccent30 text-amberAccent text-xs smtext-sm font-semibold mb-8 shadow-amber-glow
+            span class=relative flex h-2.5 w-2.5
+              span class=animate-ping absolute inline-flex h-full w-full rounded-full bg-amberAccent opacity-75span
+              span class=relative inline-flex rounded-full h-2.5 w-2.5 bg-amberAccentspan
+            span
+            spanInscriptions Ouvertes • Places Limitéesspan
+          div
+
+          !-- Headline --
+          h1 class=text-3xl smtext-5xl lgtext-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-6
+            Maîtrisez les Marchés Financiers avec une Approche
+            span class=text-transparent bg-clip-text bg-gradient-to-r from-emeraldAccent via-emerald-300 to-amberAccent
+              Structurée et Disciplinée
+            span
+          h1
+
+          !-- Subheadline --
+          p class=text-base smtext-lg lgtext-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-10 font-inter
+            Apprenez à identifier les setups à haute probabilité, gérer votre risque comme un professionnel et passer vos challenges prop firms.
+          p
+
+          !-- CTAs --
+          div class=flex flex-col smflex-row items-center justify-center gap-4 mb-16
+            a href=#inscription class=w-full smw-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-emeraldAccent hoverbg-emerald-400 text-[#0B0F19] font-extrabold text-base shadow-emerald-glow transition-all duration-200 hover-translate-y-0.5
+              i data-lucide=zap class=w-5 h-5i
+              spanRéserver ma placespan
+            a
+            a href=#programme class=w-full smw-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl glass-card hoverbg-white10 text-white font-semibold text-base border border-white15 transition-all duration-200
+              i data-lucide=layers class=w-5 h-5 text-amberAccenti
+              spanVoir le programmespan
+            a
+          div
+
+          !-- Visual Stats Bar --
+          div class=glass-card rounded-2xl p-5 smp-6 max-w-3xl mx-auto shadow-2xl
+            div class=grid grid-cols-1 smgrid-cols-3 divide-y smdivide-y-0 smdivide-x divide-white10 gap-5 smgap-0
+              div class=flex items-center justify-center gap-3.5 px-4
+                div class=w-11 h-11 rounded-xl bg-emeraldAccent15 border border-emeraldAccent30 flex items-center justify-center shrink-0
+                  i data-lucide=activity class=w-5 h-5 text-emeraldAccenti
+                div
+                div class=text-left
+                  p class=text-base smtext-lg font-extrabold text-white+100% Pratiquep
+                  p class=text-xs text-gray-400Exécution & Cas Réelsp
+                div
+              div
+
+              div class=flex items-center justify-center gap-3.5 px-4 pt-4 smpt-0
+                div class=w-11 h-11 rounded-xl bg-amberAccent15 border border-amberAccent30 flex items-center justify-center shrink-0
+                  i data-lucide=message-square-code class=w-5 h-5 text-amberAccenti
+                div
+                div class=text-left
+                  p class=text-base smtext-lg font-extrabold text-whiteSupport Discord VIPp
+                  p class=text-xs text-gray-400Suivi & Analyses Quotidiennesp
+                div
+              div
+
+              div class=flex items-center justify-center gap-3.5 px-4 pt-4 smpt-0
+                div class=w-11 h-11 rounded-xl bg-emeraldAccent15 border border-emeraldAccent30 flex items-center justify-center shrink-0
+                  i data-lucide=infinity class=w-5 h-5 text-emeraldAccenti
+                div
+                div class=text-left
+                  p class=text-base smtext-lg font-extrabold text-whiteAccès à Viep
+                  p class=text-xs text-gray-400Mises à jour inclusesp
+                div
+              div
+            div
+          div
+        div
+      div
+    section
+
+    !-- =========================================================
+         3. CE QUE VOUS ALLEZ APPRENDRE (PROGRAMME - 2x2 GRID)
+    ========================================================== --
+    section id=programme class=py-20 smpy-28
+      div class=max-w-7xl mx-auto px-4 smpx-6 lgpx-8
+        !-- Section Header --
+        div class=text-center max-w-2xl mx-auto mb-16
+          span class=inline-block text-xs font-bold uppercase tracking-[0.2em] text-emeraldAccent mb-3
+            Curriculum du Bootcamp
+          span
+          h2 class=text-3xl smtext-4xl font-extrabold text-white mb-4
+            Ce Que Vous Allez Apprendre
+          h2
+          p class=text-gray-400 font-inter text-base smtext-lg
+            Un programme condensé et rigoureux conçu pour transformer votre lecture des marchés en résultats constants.
+          p
+        div
+
+        !-- 2x2 Grid --
+        div class=grid grid-cols-1 mdgrid-cols-2 gap-6 lggap-8
+          !-- Module 1 --
+          div class=glass-card glass-card-hover rounded-2xl p-7 smp-8 relative overflow-hidden
+            div class=absolute top-0 right-0 px-4 py-1.5 bg-emeraldAccent10 border-b border-l border-emeraldAccent20 rounded-bl-xl text-xs font-bold text-emeraldAccent
+              MODULE 01
+            div
+            div class=w-14 h-14 rounded-2xl bg-emeraldAccent15 border border-emeraldAccent30 flex items-center justify-center mb-6
+              i data-lucide=bar-chart-3 class=w-7 h-7 text-emeraldAccenti
+            div
+            h3 class=text-xl smtext-2xl font-bold text-white mb-3
+              Structure de Marché & Price Action
+            h3
+            p class=text-gray-400 font-inter leading-relaxed mb-5
+              Comprenez la mécanique réelle des prix sans indicateurs inutiles. Maîtrisez l'analyse multi-timeframe, l'identification de la liquidité et le tracé précis des zones clés institutionnelles.
+            p
+            ul class=space-y-2.5 text-sm text-gray-300
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-emeraldAccent shrink-0i
+                spanAnalyse multi-timeframe (HTF vers LTF)span
+              li
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-emeraldAccent shrink-0i
+                spanZones de liquidité & déséquilibres du marchéspan
+              li
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-emeraldAccent shrink-0i
+                spanNiveaux clés et cassures de structure (BOS  CHoCH)span
+              li
+            ul
+          div
+
+          !-- Module 2 --
+          div class=glass-card glass-card-hover rounded-2xl p-7 smp-8 relative overflow-hidden
+            div class=absolute top-0 right-0 px-4 py-1.5 bg-amberAccent10 border-b border-l border-amberAccent20 rounded-bl-xl text-xs font-bold text-amberAccent
+              MODULE 02
+            div
+            div class=w-14 h-14 rounded-2xl bg-amberAccent15 border border-amberAccent30 flex items-center justify-center mb-6
+              i data-lucide=crosshair class=w-7 h-7 text-amberAccenti
+            div
+            h3 class=text-xl smtext-2xl font-bold text-white mb-3
+              Stratégies à Haute Probabilité
+            h3
+            p class=text-gray-400 font-inter leading-relaxed mb-5
+              Cessez d'entrer sur des positions aléatoires. Apprenez des modèles d'entrée reproductibles basés sur la confluence, le filtrage des faux signaux et la patience d'exécution.
+            p
+            ul class=space-y-2.5 text-sm text-gray-300
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-amberAccent shrink-0i
+                spanFiltrage des faux signaux & pièges à liquiditéspan
+              li
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-amberAccent shrink-0i
+                spanPatience stratégique et timing des sessions (Londres  NY)span
+              li
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-amberAccent shrink-0i
+                spanExécution précise avec ratios RiskReward optimisésspan
+              li
+            ul
+          div
+
+          !-- Module 3 --
+          div class=glass-card glass-card-hover rounded-2xl p-7 smp-8 relative overflow-hidden
+            div class=absolute top-0 right-0 px-4 py-1.5 bg-emeraldAccent10 border-b border-l border-emeraldAccent20 rounded-bl-xl text-xs font-bold text-emeraldAccent
+              MODULE 03
+            div
+            div class=w-14 h-14 rounded-2xl bg-emeraldAccent15 border border-emeraldAccent30 flex items-center justify-center mb-6
+              i data-lucide=shield-check class=w-7 h-7 text-emeraldAccenti
+            div
+            h3 class=text-xl smtext-2xl font-bold text-white mb-3
+              Gestion du Risque & Psychologie
+            h3
+            p class=text-gray-400 font-inter leading-relaxed mb-5
+              La rentabilité repose à 80 % sur le contrôle du risque et le mental. Protégez votre capital face aux séries de pertes et éliminez l'overtrading et le revenge trading.
+            p
+            ul class=space-y-2.5 text-sm text-gray-300
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-emeraldAccent shrink-0i
+                spanPréservation stricte du capital & calcul de lotsspan
+              li
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-emeraldAccent shrink-0i
+                spanDiscipline mentale et gestion des émotions en livespan
+              li
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-emeraldAccent shrink-0i
+                spanConstruction d'un plan de trading & journal de suivispan
+              li
+            ul
+          div
+
+          !-- Module 4 --
+          div class=glass-card glass-card-hover rounded-2xl p-7 smp-8 relative overflow-hidden
+            div class=absolute top-0 right-0 px-4 py-1.5 bg-amberAccent10 border-b border-l border-amberAccent20 rounded-bl-xl text-xs font-bold text-amberAccent
+              MODULE 04
+            div
+            div class=w-14 h-14 rounded-2xl bg-amberAccent15 border border-amberAccent30 flex items-center justify-center mb-6
+              i data-lucide=trophy class=w-7 h-7 text-amberAccenti
+            div
+            h3 class=text-xl smtext-2xl font-bold text-white mb-3
+              Préparation Prop Firms & Live Trading
+            h3
+            p class=text-gray-400 font-inter leading-relaxed mb-5
+              Passez de la théorie à l'obtention de comptes financés. Apprenez à naviguer les règles strictes des Prop Firms et tradez aux côtés de nos mentors en sessions live.
+            p
+            ul class=space-y-2.5 text-sm text-gray-300
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-amberAccent shrink-0i
+                spanMaîtrise des règles de drawdown journalier et maximalspan
+              li
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-amberAccent shrink-0i
+                spanStratégie étape par étape pour valider vos comptes financésspan
+              li
+              li class=flex items-center gap-2.5
+                i data-lucide=check-circle-2 class=w-4 h-4 text-amberAccent shrink-0i
+                spanSessions de Live Trading et revues hebdomadairesspan
+              li
+            ul
+          div
+        div
+      div
+    section
+
+    !-- =========================================================
+         4. AVANTAGES & COMMENT REJOINDRE (3-STEP PROCESS)
+    ========================================================== --
+    section id=avantages class=py-20 smpy-28 border-y border-white5 bg-[#0E1422]60
+      div class=max-w-7xl mx-auto px-4 smpx-6 lgpx-8
+        !-- Why Petricor  Avantages Highlights --
+        div class=grid grid-cols-1 mdgrid-cols-3 gap-6 mb-20
+          div class=glass-card rounded-2xl p-6 flex items-start gap-4
+            div class=w-11 h-11 rounded-xl bg-emeraldAccent15 border border-emeraldAccent30 flex items-center justify-center shrink-0
+              i data-lucide=compass class=w-5 h-5 text-emeraldAccenti
+            div
+            div
+              h3 class=font-bold text-white text-base mb-1Méthode Zéro Bruith3
+              p class=text-sm text-gray-400 font-interPas de promesses irréalistes ni de signaux miracles  uniquement une méthodologie claire et vérifiable.p
+            div
+          div
+
+          div class=glass-card rounded-2xl p-6 flex items-start gap-4
+            div class=w-11 h-11 rounded-xl bg-amberAccent15 border border-amberAccent30 flex items-center justify-center shrink-0
+              i data-lucide=users class=w-5 h-5 text-amberAccenti
+            div
+            div
+              h3 class=font-bold text-white text-base mb-1Écosystème Francophoneh3
+              p class=text-sm text-gray-400 font-interÉchangez quotidiennement avec des traders motivés au Maroc et dans toute la francophonie.p
+            div
+          div
+
+          div class=glass-card rounded-2xl p-6 flex items-start gap-4
+            div class=w-11 h-11 rounded-xl bg-emeraldAccent15 border border-emeraldAccent30 flex items-center justify-center shrink-0
+              i data-lucide=line-chart class=w-5 h-5 text-emeraldAccenti
+            div
+            div
+              h3 class=font-bold text-white text-base mb-1Backtesting & Feedbackh3
+              p class=text-sm text-gray-400 font-interVos analyses et vos prises de positions sont corrigées en direct pour accélérer votre progression.p
+            div
+          div
+        div
+
+        !-- 3-Step Process Header --
+        div class=text-center max-w-2xl mx-auto mb-16
+          span class=inline-block text-xs font-bold uppercase tracking-[0.2em] text-amberAccent mb-3
+            Intégration Rapide
+          span
+          h2 class=text-3xl smtext-4xl font-extrabold text-white mb-4
+            Comment Rejoindre le Bootcamp
+          h2
+          p class=text-gray-400 font-inter text-base smtext-lg
+            Trois étapes simples pour intégrer la prochaine cohorte et commencer votre montée en compétence.
+          p
+        div
+
+        !-- 3 Steps Grid --
+        div class=grid grid-cols-1 mdgrid-cols-3 gap-8 relative
+          !-- Connecting line on desktop --
+          div class=hidden mdblock absolute top-12 left-[16%] right-[16%] h-px bg-gradient-to-r from-emeraldAccent40 via-amberAccent40 to-emeraldAccent40 pointer-events-nonediv
+
+          !-- Step 1 --
+          div class=glass-card rounded-2xl p-8 text-center relative
+            div class=w-16 h-16 rounded-2xl bg-gradient-to-br from-emeraldAccent to-emerald-700 text-[#0B0F19] font-extrabold text-xl flex items-center justify-center mx-auto mb-6 shadow-emerald-glow relative z-10
+              01
+            div
+            h3 class=text-xl font-bold text-white mb-3
+              Remplissez le formulaire d'inscription
+            h3
+            p class=text-sm text-gray-400 font-inter leading-relaxed
+              Renseignez vos coordonnées et votre niveau actuel ci-dessous pour valider votre demande via WhatsApp.
+            p
+          div
+
+          !-- Step 2 --
+          div class=glass-card rounded-2xl p-8 text-center relative
+            div class=w-16 h-16 rounded-2xl bg-gradient-to-br from-amberAccent to-amber-600 text-[#0B0F19] font-extrabold text-xl flex items-center justify-center mx-auto mb-6 shadow-amber-glow relative z-10
+              02
+            div
+            h3 class=text-xl font-bold text-white mb-3
+              Rejoignez notre communauté privée Discord
+            h3
+            p class=text-sm text-gray-400 font-inter leading-relaxed
+              Dès confirmation de votre place, vous recevez votre accès exclusif aux salons VIP, plans de marché et ressources.
+            p
+          div
+
+          !-- Step 3 --
+          div class=glass-card rounded-2xl p-8 text-center relative
+            div class=w-16 h-16 rounded-2xl bg-gradient-to-br from-emeraldAccent to-emerald-700 text-[#0B0F19] font-extrabold text-xl flex items-center justify-center mx-auto mb-6 shadow-emerald-glow relative z-10
+              03
+            div
+            h3 class=text-xl font-bold text-white mb-3
+              Commencez votre formation et les sessions live
+            h3
+            p class=text-sm text-gray-400 font-inter leading-relaxed
+              Suivez les modules structurés à votre rythme et participez aux sessions d'analyse et de trading en direct.
+            p
+          div
+        div
+      div
+    section
+
+    !-- =========================================================
+         5. REGISTRATION  CONTACT SECTION
+    ========================================================== --
+    section id=inscription class=py-20 smpy-28
+      div class=max-w-4xl mx-auto px-4 smpx-6 lgpx-8
+        div class=glass-card rounded-3xl p-6 smp-10 lgp-12 border border-emeraldAccent25 shadow-2xl relative overflow-hidden
+          !-- Decorative glow inside form card --
+          div class=absolute -top-24 -right-24 w-64 h-64 bg-emeraldAccent15 rounded-full blur-3xl pointer-events-nonediv
+
+          div class=relative z-10
+            div class=text-center max-w-xl mx-auto mb-10
+              span class=inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldAccent10 border border-emeraldAccent30 text-emeraldAccent text-xs font-bold uppercase tracking-wider mb-4
+                i data-lucide=user-plus class=w-3.5 h-3.5i
+                Candidature Directe
+              span
+              h2 class=text-3xl smtext-4xl font-extrabold text-white mb-3
+                Réservez Votre Place
+              h2
+              p class=text-gray-400 font-inter text-sm smtext-base
+                Complétez ce formulaire rapide. Votre demande sera automatiquement préparée et envoyée à notre équipe sur WhatsApp.
+              p
+            div
+
+            !-- Registration Form --
+            form id=bootcamp-form class=space-y-6
+              div class=grid grid-cols-1 smgrid-cols-2 gap-6
+                !-- Nom Complet --
+                div
+                  label for=fullName class=block text-sm font-semibold text-gray-200 mb-2
+                    Nom Complet span class=text-emeraldAccentspan
+                  label
+                  div class=relative
+                    i data-lucide=user class=w-4 h-4 text-gray-400 absolute left-4 top-12 -translate-y-12 pointer-events-nonei
+                    input
+                      type=text
+                      id=fullName
+                      name=fullName
+                      required
+                      placeholder=Ex Yassine El Amrani
+                      class=w-full pl-11 pr-4 py-3.5 rounded-xl bg-[#0B0F19]90 border border-white10 text-white placeholder-gray-500 focusoutline-none focusborder-emeraldAccent focusring-1 focusring-emeraldAccent transition-colors
+                    
+                  div
+                div
+
+                !-- Pseudo Discord  Instagram --
+                div
+                  label for=socialHandle class=block text-sm font-semibold text-gray-200 mb-2
+                    Pseudo Discord  Instagram span class=text-emeraldAccentspan
+                  label
+                  div class=relative
+                    i data-lucide=at-sign class=w-4 h-4 text-gray-400 absolute left-4 top-12 -translate-y-12 pointer-events-nonei
+                    input
+                      type=text
+                      id=socialHandle
+                      name=socialHandle
+                      required
+                      placeholder=Ex @yassine_fx
+                      class=w-full pl-11 pr-4 py-3.5 rounded-xl bg-[#0B0F19]90 border border-white10 text-white placeholder-gray-500 focusoutline-none focusborder-emeraldAccent focusring-1 focusring-emeraldAccent transition-colors
+                    
+                  div
+                div
+
+                !-- Numéro WhatsApp --
+                div
+                  label for=whatsappNumber class=block text-sm font-semibold text-gray-200 mb-2
+                    Numéro WhatsApp span class=text-emeraldAccentspan
+                  label
+                  div class=relative
+                    i data-lucide=phone class=w-4 h-4 text-gray-400 absolute left-4 top-12 -translate-y-12 pointer-events-nonei
+                    input
+                      type=tel
+                      id=whatsappNumber
+                      name=whatsappNumber
+                      required
+                      placeholder=Ex +212 6 12 34 56 78
+                      class=w-full pl-11 pr-4 py-3.5 rounded-xl bg-[#0B0F19]90 border border-white10 text-white placeholder-gray-500 focusoutline-none focusborder-emeraldAccent focusring-1 focusring-emeraldAccent transition-colors
+                    
+                  div
+                div
+
+                !-- Niveau actuel --
+                div
+                  label for=tradingLevel class=block text-sm font-semibold text-gray-200 mb-2
+                    Niveau actuel span class=text-emeraldAccentspan
+                  label
+                  div class=relative
+                    i data-lucide=bar-chart class=w-4 h-4 text-gray-400 absolute left-4 top-12 -translate-y-12 pointer-events-nonei
+                    select
+                      id=tradingLevel
+                      name=tradingLevel
+                      required
+                      class=w-full pl-11 pr-10 py-3.5 rounded-xl bg-[#0B0F19]90 border border-white10 text-white focusoutline-none focusborder-emeraldAccent focusring-1 focusring-emeraldAccent transition-colors cursor-pointer
+                    
+                      option value= disabled selected class=text-gray-500Sélectionnez votre niveauoption
+                      option value=DébutantDébutant (Moins de 6 mois)option
+                      option value=IntermédiaireIntermédiaire (Bases acquises, manque de constance)option
+                      option value=AvancéAvancé (Objectif Prop Firm & Scaling)option
+                    select
+                  div
+                div
+              div
+
+              !-- Submit Button --
+              button
+                type=submit
+                class=w-full flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-emeraldAccent hoverbg-emerald-400 text-[#0B0F19] font-extrabold text-base smtext-lg shadow-emerald-glow transition-all duration-200 hover-translate-y-0.5 cursor-pointer
+              
+                i data-lucide=send class=w-5 h-5i
+                spanValider mon inscription via WhatsAppspan
+              button
+
+              p class=text-center text-xs text-gray-400 flex items-center justify-center gap-2
+                i data-lucide=lock class=w-3.5 h-3.5 text-emeraldAccenti
+                spanVos informations restent strictement confidentielles. Aucune carte bancaire requise sur cette page.span
+              p
+            form
+
+            !-- Confirmation Message (Hidden by default) --
+            div id=form-confirmation class=hidden mt-8 p-6 rounded-2xl bg-emeraldAccent10 border border-emeraldAccent40 text-left
+              div class=flex items-start gap-4
+                div class=w-10 h-10 rounded-xl bg-emeraldAccent text-[#0B0F19] flex items-center justify-center shrink-0 mt-0.5
+                  i data-lucide=check class=w-6 h-6i
+                div
+                div class=flex-1
+                  h4 class=text-lg font-bold text-white mb-1
+                    Demande enregistrée avec succès !
+                  h4
+                  p class=text-sm text-gray-300 font-inter mb-4
+                    Une fenêtre WhatsApp vient de s'ouvrir avec votre message pré-rempli pour finaliser votre inscription avec l'équipe Petricor Académie.
+                  p
+                  div class=flex flex-wrap items-center gap-3
+                    a id=whatsapp-fallback-link href=# target=_blank rel=noopener noreferrer class=inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emeraldAccent text-[#0B0F19] font-bold text-xs smtext-sm hoverbg-emerald-400 transition-colors
+                      i data-lucide=external-link class=w-4 h-4i
+                      spanRouvrir WhatsApp manuellementspan
+                    a
+                    button type=button id=reset-form-btn class=text-xs smtext-sm text-gray-400 hovertext-white underline underline-offset-4
+                      Modifier mes informations
+                    button
+                  div
+                div
+              div
+            div
+          div
+        div
+      div
+    section
+
+    !-- =========================================================
+         6. FAQ SECTION (ACCORDION)
+    ========================================================== --
+    section id=faq class=py-20 smpy-28 border-t border-white5 bg-[#0E1422]50
+      div class=max-w-3xl mx-auto px-4 smpx-6 lgpx-8
+        div class=text-center mb-14
+          span class=inline-block text-xs font-bold uppercase tracking-[0.2em] text-emeraldAccent mb-3
+            Questions Fréquentes
+          span
+          h2 class=text-3xl smtext-4xl font-extrabold text-white mb-4
+            Tout Ce Que Vous Devez Savoir
+          h2
+          p class=text-gray-400 font-inter
+            Des réponses transparentes sur le déroulement du bootcamp et l'accompagnement.
+          p
+        div
+
+        div class=space-y-4 id=faq-container
+          !-- FAQ 1 --
+          div class=faq-item glass-card rounded-2xl overflow-hidden active
+            button type=button class=faq-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer
+              span class=font-bold text-white text-base smtext-lgQuelle est la durée du bootcamp span
+              i data-lucide=chevron-down class=faq-icon w-5 h-5 text-emeraldAccent shrink-0i
+            button
+            div class=faq-content
+              div class=faq-inner px-6 pb-5 text-sm smtext-base text-gray-400 font-inter leading-relaxed
+                Le programme intensif se déroule sur strong class=text-gray-2004 semaines structuréesstrong mêlant cours théoriques, exercices pratiques de lecture graphique et sessions de trading en direct. Vous conservez toutefois un strong class=text-emeraldAccentaccès à viestrong aux enregistrements, mises à jour et ressources.
+              div
+            div
+          div
+
+          !-- FAQ 2 --
+          div class=faq-item glass-card rounded-2xl overflow-hidden
+            button type=button class=faq-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer
+              span class=font-bold text-white text-base smtext-lgQuels sont les prérequis pour les débutants span
+              i data-lucide=chevron-down class=faq-icon w-5 h-5 text-emeraldAccent shrink-0i
+            button
+            div class=faq-content
+              div class=faq-inner px-6 pb-5 text-sm smtext-base text-gray-400 font-inter leading-relaxed
+                Aucune expérience préalable n'est exigée. Nous reprenons les bases fondamentales dès le départ (lecture des chandeliers, fonctionnement des pairesindices, utilisation de TradingView) avant d'aborder la structure avancée et le risk management. Un ordinateur ou une tablette avec connexion internet suffit.
+              div
+            div
+          div
+
+          !-- FAQ 3 --
+          div class=faq-item glass-card rounded-2xl overflow-hidden
+            button type=button class=faq-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer
+              span class=font-bold text-white text-base smtext-lgComment fonctionne l'accès au Discord privé span
+              i data-lucide=chevron-down class=faq-icon w-5 h-5 text-emeraldAccent shrink-0i
+            button
+            div class=faq-content
+              div class=faq-inner px-6 pb-5 text-sm smtext-base text-gray-400 font-inter leading-relaxed
+                Dès votre inscription validée, vous recevez un lien d'invitation personnel vers notre serveur Discord VIP. Vous y trouverez les salons d'analyses quotidiennes (Forex, Or, Indices), le suivi psychologique, les replays des lives et un canal d'entraide directe avec les formateurs.
+              div
+            div
+          div
+
+          !-- FAQ 4 --
+          div class=faq-item glass-card rounded-2xl overflow-hidden
+            button type=button class=faq-trigger w-full px-6 py-5 text-left flex items-center justify-between gap-4 cursor-pointer
+              span class=font-bold text-white text-base smtext-lgComment se déroule l'accompagnement Prop Firm span
+              i data-lucide=chevron-down class=faq-icon w-5 h-5 text-emeraldAccent shrink-0i
+            button
+            div class=faq-content
+              div class=faq-inner px-6 pb-5 text-sm smtext-base text-gray-400 font-inter leading-relaxed
+                Le Module 4 est entièrement dédié aux challenges Prop Firms (FTMO, FundedNext, etc.). Nous établissons ensemble un plan mathématique adapté aux limites de drawdown journalier et maximal, nous corrigeons vos trades en démobacktest et nous vous accompagnons jusqu'à l'obtention et la gestion de votre compte financé.
+              div
+            div
+          div
+        div
+      div
+    section
+  main
+
+  !-- =========================================================
+       7. FOOTER
+  ========================================================== --
+  footer class=border-t border-white10 bg-[#080B12] relative z-10
+    div class=max-w-7xl mx-auto px-4 smpx-6 lgpx-8 py-12
+      div class=flex flex-col mdflex-row items-center justify-between gap-8 pb-8 border-b border-white10
+        !-- Brand --
+        div class=flex items-center gap-3
+          div class=w-9 h-9 rounded-xl bg-gradient-to-br from-emeraldAccent to-emerald-700 flex items-center justify-center
+            i data-lucide=candlestick-chart class=w-5 h-5 text-whitei
+          div
+          span class=font-extrabold tracking-wider text-lg text-white
+            PETRICOR span class=text-emeraldAccentACADÉMIEspan
+          span
+        div
+
+        !-- Social Links --
+        div class=flex items-center gap-4
+          a href=httpsinstagram.com target=_blank rel=noopener noreferrer aria-label=Instagram Petricor Académie class=inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hoverborder-amberAccent50 text-sm font-medium text-gray-300 hovertext-white transition-colors
+            i data-lucide=instagram class=w-4 h-4 text-amberAccenti
+            spanInstagramspan
+          a
+          a href=httpsdiscord.com target=_blank rel=noopener noreferrer aria-label=Discord Petricor Académie class=inline-flex items-center gap-2 px-4 py-2.5 rounded-xl glass-card hoverborder-emeraldAccent50 text-sm font-medium text-gray-300 hovertext-white transition-colors
+            i data-lucide=message-circle class=w-4 h-4 text-emeraldAccenti
+            spanDiscordspan
+          a
+        div
+      div
+
+      !-- Disclaimer & Copyright --
+      div class=pt-8 flex flex-col mdflex-row items-center justify-between gap-4 text-center mdtext-left
+        p class=text-xs text-gray-400 font-inter max-w-2xl leading-relaxed
+          strong class=text-amberAccent90Avertissement sur les risques strong Le trading comporte des risques de perte en capital. Contenu purement éducatif. Les performances passées ne préjugent pas des résultats futurs.
+        p
+        p class=text-xs text-gray-500
+          &copy; span id=current-yearspan Petricor Académie. Tous droits réservés.
+        p
+      div
+    div
+  footer
+
+  !-- =========================================================
+       VANILLA JAVASCRIPT INTERACTIVITY
+  ========================================================== --
+  script
+    document.addEventListener('DOMContentLoaded', () = {
+       1. Initialize Lucide Icons
+      lucide.createIcons();
+
+       Dynamic Footer Year
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+       2. Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      function toggleMobileMenu(forceClose = false) {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (forceClose  !isHidden) {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      mobileMenuBtn.addEventListener('click', () = toggleMobileMenu());
+      mobileNavLinks.forEach(link = {
+        link.addEventListener('click', () = toggleMobileMenu(true));
+      });
+
+       3. FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item = {
+        const trigger = item.querySelector('.faq-trigger');
+        trigger.addEventListener('click', () = {
+          const isCurrentlyActive = item.classList.contains('active');
+           Close all items
+          faqItems.forEach(otherItem = otherItem.classList.remove('active'));
+           Re-open if it wasn't active
+          if (!isCurrentlyActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+       4. Registration Form - Pre-filled WhatsApp Message + Confirmation UI
+      const bootcampForm = document.getElementById('bootcamp-form');
+      const confirmationBox = document.getElementById('form-confirmation');
+      const whatsappFallbackLink = document.getElementById('whatsapp-fallback-link');
+      const resetFormBtn = document.getElementById('reset-form-btn');
+
+       =========================================================================
+       CONFIGURATION WHATSAPP  Remplacez le numéro ci-dessous (sans + ni espaces)
+       par votre numéro WhatsApp Business ou personnel (format international).
+       Exemple Maroc  212612345678 pour +212 6 12 34 56 78
+       =========================================================================
+      const ACADEMY_WHATSAPP_NUMBER = '212600000000';
+
+      bootcampForm.addEventListener('submit', (e) = {
+        e.preventDefault();
+
+        const fullName = document.getElementById('fullName').value.trim();
+        const socialHandle = document.getElementById('socialHandle').value.trim();
+        const whatsappNumber = document.getElementById('whatsappNumber').value.trim();
+        const tradingLevel = document.getElementById('tradingLevel').value;
+
+        if (!fullName  !socialHandle  !whatsappNumber  !tradingLevel) {
+          return;
+        }
+
+        const formattedMessage =
+          `Bonjour Petricor Académie,nn` +
+          `Je souhaite réserver ma place pour le prochain Bootcamp de Trading. Voici mes informations nn` +
+          `• Nom Complet  ${fullName}n` +
+          `• Pseudo Discord  Instagram  ${socialHandle}n` +
+          `• Numéro WhatsApp  ${whatsappNumber}n` +
+          `• Niveau actuel  ${tradingLevel}nn` +
+          `Merci de m'indiquer les prochaines étapes pour rejoindre le Discord privé !`;
+
+        const whatsappUrl = `httpswa.me${ACADEMY_WHATSAPP_NUMBER}text=${encodeURIComponent(formattedMessage)}`;
+
+         Update fallback button URL & display confirmation message on screen
+        whatsappFallbackLink.href = whatsappUrl;
+        bootcampForm.classList.add('hidden');
+        confirmationBox.classList.remove('hidden');
+
+         Open pre-filled WhatsApp message in a new tab
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      });
+
+      resetFormBtn.addEventListener('click', () = {
+        confirmationBox.classList.add('hidden');
+        bootcampForm.classList.remove('hidden');
+      });
+    });
+  script
+body
+html
